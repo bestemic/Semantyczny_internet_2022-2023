@@ -1,0 +1,119 @@
+@base <http://harrypotter.wiki.com/1.0/> .
+
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/>.
+
+@prefix rel:      <http://harrypotter.wiki.com/1.0/relation/> .
+@prefix type:      <http://harrypotter.wiki.com/1.0/type/> .
+
+<Harry-Potter>
+    a             type:Wizard, type:HalfBlood ;
+    foaf:name     "Harry"^^xsd:string ;
+    foaf:lastName "Potter"^^xsd:string ;
+    foaf:birthday "1980-07-31"^^xsd:date ;
+    foaf:age      "42"^^xsd:decimal ;
+    foaf:knows    <Ron>, <Hermiona>, <Voldemort> ;
+    rel:uses      <Alochomora> ;
+    rel:belongs   <Gryffindor> .
+
+<Ron>
+    a             type:Wizard, type:PureBlood ;
+    foaf:name     "Ron"^^xsd:string ;
+    foaf:lastName "Weasley"^^xsd:string ;
+    foaf:birthday "1980-03-01"^^xsd:date ;
+    foaf:age      "42"^^xsd:decimal ;
+    foaf:knows    <Harry-Potter>, <Hermiona> ;
+    rel:uses      <Alochomora> ;
+    rel:belongs   <Gryffindor> .
+
+<Hermiona>
+    a             type:Wizard, type:Muggle ;
+    foaf:name     "Hermiona"^^xsd:string ;
+    foaf:lastName "Granger"^^xsd:string ;
+    foaf:birthday "1979-09-17"^^xsd:date ;
+    foaf:age      "43"^^xsd:decimal ;
+    foaf:knows    <Harry-Potter>, <Ron> ;
+    rel:uses      <Alochomora> ;
+    rel:belongs   <Gryffindor> .
+
+<Voldemort>
+    a             type:Wizard, type:HalfBlood ;
+    foaf:name     "Tom"^^xsd:string ;
+    foaf:lastName "Riddle"^^xsd:string ;
+    foaf:nick     "Lord Voldemort"^^xsd:string ;
+    foaf:birthday "1926-12-31"^^xsd:date ;
+    rel:death     "1998-05-02"^^xsd:date ;
+    foaf:age      "71"^^xsd:decimal ;
+    foaf:knows    <Harry-Potter>, <Ron>, <Hermiona> ;
+    rel:uses      <AvadaKedavra>, <Alochomora> ;
+    rel:belongs   <Slytherin> .
+
+<Gryffindor>
+    a           type:House ;
+    rdf:name    "Gryffindor"^^xsd:string ;
+    rel:belongs <Hogwart> .
+
+<Slytherin>
+    a           type:House ;
+    rdf:name    "Slytherin"^^xsd:string ;
+    rel:belongs <Hogwart> .
+
+<Ravenclaw>
+    a           type:House ;
+    rdf:name    "Ravenclaw"^^xsd:string ;
+    rel:belongs <Hogwart> .
+
+<Hufflepuff>
+    a           type:House ;
+    rdf:name    "Hufflepuff"^^xsd:string ;
+    rel:belongs <Hogwart> .
+
+<Hogwart>
+    a              type:Place ;
+    rdf:name       "Hogwart"^^xsd:string ;
+    rel:adress     "Scotland"^^xsd:string ;
+    rel:composedOf _:houses, ( "First Class" "Second Class" "Third Class" "Fourth Class" "Fifth Class" "Sixth Class"
+                            "Seventh Class" ) .
+
+_:houses
+    a      rdf:Bag ;
+    rdf:_1 <Gryffindor> ;
+    rdf:_2 <Slytherin> ;
+    rdf:_3 <Hufflepuff> ;
+    rdf:_4 <Ravenclaw> .
+
+type:Place
+    a rdfs:Class .
+
+type:House
+    a               rdfs:Class ;
+    rdfs:subClassOf type:Place .
+
+type:Wizard 
+    a               rdfs:Class ;
+    rdfs:subClassOf foaf:Person .
+
+type:Muggle
+    a               rdfs:Class ;
+    rdfs:subClassOf foaf:Person .
+
+type:HalfBlood
+    a               rdfs:Class ;
+    rdfs:subClassOf foaf:Person .
+
+type:PureBlood 
+    a               rdfs:Class ;
+    rdfs:subClassOf foaf:Person .
+
+type:Spell
+    a rdfs:Class .
+
+<AvadaKedavra>
+    a                   type:Spell ;
+    rel:isUnforgivable  "true"^^xsd:boolean .
+
+<Alochomora>
+    a                   type:Spell ;
+    rel:isUnforgivable  "false"^^xsd:boolean .
