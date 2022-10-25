@@ -1,0 +1,10 @@
+PREFIX rel: <http://harrypotter.wiki.com/1.0/relation/>
+PREFIX type: <http://harrypotter.wiki.com/1.0/type/>
+
+SELECT ?who ?house
+WHERE {
+    ?who rel:belongs ?house .
+    ?who a type:Wizard .
+}
+ORDER BY ?house ?who
+LIMIT 10

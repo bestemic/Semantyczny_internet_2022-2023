@@ -1,81 +1,140 @@
 @base <http://harrypotter.wiki.com/1.0/> .
 
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf:  <http://xmlns.com/foaf/0.1/>.
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:      <http://xmlns.com/foaf/0.1/>.
+@prefix fhkb:      <http://www.example.com/genealogy.owl#> .
 
-@prefix rel:      <http://harrypotter.wiki.com/1.0/relation/> .
+@prefix rel:       <http://harrypotter.wiki.com/1.0/relation/> .
 @prefix type:      <http://harrypotter.wiki.com/1.0/type/> .
 
+rel:uses
+    a           rdfs:Property ;
+    rdfs:domain type:Wizard ;
+    rdfs:range  type:Spell .
+
+rel:belongs
+    a           rdfs:Property ;
+    rdfs:domain type:Wizard ;
+    rdfs:range  type:House .
+
+rel:death
+    a           rdfs:Property ;
+    rdfs:domain foaf:Person ;
+    rdfs:range  rdfs:Literal .
+
+rel:adress
+    a           rdfs:Property ;
+    rdfs:domain foaf:Person ;
+    rdfs:range  rdfs:Literal .
+
+rel:composedOf
+    a           rdfs:Property ;
+    rdfs:domain type:Place ;
+    rdfs:range  rdfs:Container, rdf:List .
+
+rel:isUnforgivable
+    a           rdfs:Property ;
+    rdfs:domain type:Spell ;
+    rdfs:range  rdfs:Literal .
+
 <Harry-Potter>
-    a             type:Wizard, type:HalfBlood ;
-    foaf:name     "Harry"^^xsd:string ;
-    foaf:lastName "Potter"^^xsd:string ;
-    foaf:birthday "1980-07-31"^^xsd:date ;
-    foaf:age      "42"^^xsd:decimal ;
-    foaf:knows    <Ron>, <Hermiona>, <Voldemort> ;
-    rel:uses      <Alochomora> ;
-    rel:belongs   <Gryffindor> .
+    a                type:Wizard, type:HalfBlood, fhkb:Man ;
+    foaf:name        "Harry"^^xsd:string ;
+    foaf:lastName    "Potter"^^xsd:string ;
+    foaf:birthday    "1980-07-31"^^xsd:date ;
+    foaf:age         "42"^^xsd:decimal ;
+    foaf:knows       <Ron>, <Hermiona>, <Voldemort> ;
+    rel:uses         <Alochomora>, <Expecto-Patronum> ;
+    rdfs:label       "HarryPotter" ;
+    rdfs:seeAlso     <https://harrypotter.fandom.com/wiki/Harry_Potter> ;
+    rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Harry_Potter_(character)> ;
+    rdfs:comment     "Harry Potter is a fictional hero who lost his parents and then when he was a teenager it turned out that he is a wizard who has to fight the mighty Voldemort." ;
+    rel:belongs      <Gryffindor> .
 
 <Ron>
-    a             type:Wizard, type:PureBlood ;
-    foaf:name     "Ron"^^xsd:string ;
-    foaf:lastName "Weasley"^^xsd:string ;
-    foaf:birthday "1980-03-01"^^xsd:date ;
-    foaf:age      "42"^^xsd:decimal ;
-    foaf:knows    <Harry-Potter>, <Hermiona> ;
-    rel:uses      <Alochomora> ;
-    rel:belongs   <Gryffindor> .
+    a                type:Wizard, type:PureBlood, fhkb:Man ;
+    foaf:name        "Ron"^^xsd:string ;
+    foaf:lastName    "Weasley"^^xsd:string ;
+    foaf:birthday    "1980-03-01"^^xsd:date ;
+    foaf:age         "42"^^xsd:decimal ;
+    foaf:knows       <Harry-Potter>, <Hermiona> ;
+    rel:uses         <Alochomora> ;
+    fhkb:hasWife     <Hermiona> ;
+    rdfs:label       "Ron" ;
+    rdfs:seeAlso     <https://harrypotter.fandom.com/pl/wiki/Ron_Weasley> ;
+    rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Ron_Weasley> ;
+    rdfs:comment     "He comes from a large family. He lives in the countryside and has a flying car." ;
+    rel:belongs      <Gryffindor> .
 
 <Hermiona>
-    a             type:Wizard, type:Muggle ;
-    foaf:name     "Hermiona"^^xsd:string ;
-    foaf:lastName "Granger"^^xsd:string ;
-    foaf:birthday "1979-09-17"^^xsd:date ;
-    foaf:age      "43"^^xsd:decimal ;
-    foaf:knows    <Harry-Potter>, <Ron> ;
-    rel:uses      <Alochomora> ;
-    rel:belongs   <Gryffindor> .
+    a                type:Wizard, type:Muggle, fhkb:Woman ;
+    foaf:name        "Hermiona"^^xsd:string ;
+    foaf:lastName    "Granger"^^xsd:string ;
+    foaf:birthday    "1979-09-17"^^xsd:date ;
+    foaf:age         "43"^^xsd:decimal ;
+    foaf:knows       <Harry-Potter>, <Ron> ;
+    rel:uses         <Alochomora>, <Expecto-Patronum> ;
+    fhkb:hasHusband  <Harry-Potter> ;
+    rdfs:label       "Hermiona" ;
+    rdfs:seeAlso     <https://harrypotter.fandom.com/pl/wiki/Hermiona_Granger> ;
+    rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Hermione_Granger> ;
+    rdfs:comment     "He comes from a Muggle family. She is absorbed in science." ;
+    rel:belongs      <Gryffindor> .
 
 <Voldemort>
-    a             type:Wizard, type:HalfBlood ;
-    foaf:name     "Tom"^^xsd:string ;
-    foaf:lastName "Riddle"^^xsd:string ;
-    foaf:nick     "Lord Voldemort"^^xsd:string ;
-    foaf:birthday "1926-12-31"^^xsd:date ;
-    rel:death     "1998-05-02"^^xsd:date ;
-    foaf:age      "71"^^xsd:decimal ;
-    foaf:knows    <Harry-Potter>, <Ron>, <Hermiona> ;
-    rel:uses      <AvadaKedavra>, <Alochomora> ;
-    rel:belongs   <Slytherin> .
+    a                type:Wizard, type:HalfBlood, fhkb:Man ;
+    foaf:name        "Tom"^^xsd:string ;
+    foaf:lastName    "Riddle"^^xsd:string ;
+    foaf:nick        "Lord Voldemort"^^xsd:string ;
+    foaf:birthday    "1926-12-31"^^xsd:date ;
+    rel:death        "1998-05-02"^^xsd:date ;
+    foaf:age         "71"^^xsd:decimal ;
+    foaf:knows       <Harry-Potter>, <Ron>, <Hermiona> ;
+    rel:uses         <AvadaKedavra>, <Alochomora> ;
+    rdfs:label       "Voldemort" ;
+    rdfs:seeAlso     <https://harrypotter.fandom.com/wiki/Tom_Riddle> ;
+    rdfs:isDefinedBy <https://pl.wikipedia.org/wiki/Lord_Voldemort> ;
+    rdfs:comment     "He turned to the dark side of magic. He killed Harry's parents and tried to kill him too." ;
+    rel:belongs      <Slytherin> .
 
 <Gryffindor>
-    a           type:House ;
-    rdf:name    "Gryffindor"^^xsd:string ;
-    rel:belongs <Hogwart> .
+    a            type:House ;
+    rdf:name     "Gryffindor"^^xsd:string ;
+    rdfs:label   "Gryffindor" ;
+    rdfs:comment "One of the houses at Hogwarts. Its color is red." ;
+    rel:belongs  <Hogwart> .
 
 <Slytherin>
-    a           type:House ;
-    rdf:name    "Slytherin"^^xsd:string ;
-    rel:belongs <Hogwart> .
+    a            type:House ;
+    rdf:name     "Slytherin"^^xsd:string ;
+    rdfs:label   "Slytherin" ;
+    rdfs:comment "One of the houses at Hogwarts. Its color is green." ;
+    rel:belongs  <Hogwart> .
 
 <Ravenclaw>
-    a           type:House ;
-    rdf:name    "Ravenclaw"^^xsd:string ;
-    rel:belongs <Hogwart> .
+    a            type:House ;
+    rdf:name     "Ravenclaw"^^xsd:string ;
+    rdfs:label   "Ravenclaw" ;
+    rdfs:comment "One of the houses at Hogwarts. Its color is blue." ;
+    rel:belongs  <Hogwart> .
 
 <Hufflepuff>
-    a           type:House ;
-    rdf:name    "Hufflepuff"^^xsd:string ;
-    rel:belongs <Hogwart> .
+    a            type:House ;
+    rdf:name     "Hufflepuff"^^xsd:string ;
+    rdfs:label   "Hufflepuff" ;
+    rdfs:comment "One of the houses at Hogwarts. Its color is yellow." ;
+    rel:belongs  <Hogwart> .
 
 <Hogwart>
     a              type:Place ;
     rdf:name       "Hogwart"^^xsd:string ;
     rel:adress     "Scotland"^^xsd:string ;
     rel:composedOf _:houses, ( "First Class" "Second Class" "Third Class" "Fourth Class" "Fifth Class" "Sixth Class"
-                            "Seventh Class" ) .
+                               "Seventh Class" ) ;
+    rdfs:label     "Hogwart" ;
+    rdfs:comment   "One of the few schools of magic." .
 
 _:houses
     a      rdf:Bag ;
@@ -85,35 +144,59 @@ _:houses
     rdf:_4 <Ravenclaw> .
 
 type:Place
-    a rdfs:Class .
+    a            rdfs:Class ;
+    rdfs:label   "Place" ;
+    rdfs:comment "A class that defines a place in the world." .
 
 type:House
     a               rdfs:Class ;
-    rdfs:subClassOf type:Place .
+    rdfs:subClassOf type:Place ;
+    rdfs:label      "House" ;
+    rdfs:comment    "The class identifies the home of one of the four Hogwarts schools of magic." .
 
-type:Wizard 
+type:Wizard
     a               rdfs:Class ;
-    rdfs:subClassOf foaf:Person .
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "Wizard" ;
+    rdfs:comment    "A person with magical abilities." .
 
 type:Muggle
     a               rdfs:Class ;
-    rdfs:subClassOf foaf:Person .
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "Muggle" ;
+    rdfs:comment    "A person with no magical abilities." .
 
 type:HalfBlood
     a               rdfs:Class ;
-    rdfs:subClassOf foaf:Person .
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "HalfBlood" ;
+    rdfs:comment    "A person from a family with one wizard parent." .
 
-type:PureBlood 
+type:PureBlood
     a               rdfs:Class ;
-    rdfs:subClassOf foaf:Person .
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "PureBlood" ;
+    rdfs:comment    "A person with two parents who are wizards." .
 
 type:Spell
-    a rdfs:Class .
+    a            rdfs:Class ;
+    rdfs:label   "Spell" ;
+    rdfs:comment "A formula that gives off a magical aura that affects the outside world." .
 
 <AvadaKedavra>
-    a                   type:Spell ;
-    rel:isUnforgivable  "true"^^xsd:boolean .
+    a                  type:Spell ;
+    rel:isUnforgivable "true"^^xsd:boolean ;
+    rdfs:label         "AvadaKedavra" ;
+    rdfs:comment       "Forbidden spell that kills." .
 
 <Alochomora>
-    a                   type:Spell ;
-    rel:isUnforgivable  "false"^^xsd:boolean .
+    a                  type:Spell ;
+    rel:isUnforgivable "false"^^xsd:boolean ;
+    rdfs:label         "Alochomora" ;
+    rdfs:comment       "A spell that allows you to open locks." .
+
+<Expecto-Patronum>
+    a                  type:Spell ;
+    rel:isUnforgivable "false"^^xsd:boolean ;
+    rdfs:label         "Expecto Patronum" ;
+    rdfs:comment       "A spell that allows you to create shield against dementors." .

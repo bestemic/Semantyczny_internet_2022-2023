@@ -90,4 +90,8 @@ Agenci wykonujący podstawowe czynności zamiast użytkownika, jak zamawianie za
 * UPDATE
     <br>Zarządzanie grafem na podstawie zapytań
 
+## Wykład nr 3
 
+---
+
+cdn.

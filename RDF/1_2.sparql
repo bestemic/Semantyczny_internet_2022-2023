@@ -1,0 +1,13 @@
+BASE   <http://harrypotter.wiki.com/1.0/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rel: <http://harrypotter.wiki.com/1.0/relation/>
+ 
+SELECT ?place ?placeLabel ?type ?typeLabel
+WHERE {
+  <Hogwart> rel:composedOf [ a rdf:Bag ;
+                   			rdfs:member ?place ] .
+  ?place a ?type .
+  ?place rdfs:label ?placeLabel .
+  ?type rdfs:label ?typeLabel .
+}

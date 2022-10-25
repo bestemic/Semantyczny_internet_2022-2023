@@ -1,0 +1,9 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+ 
+SELECT ?name ?birth ?age (YEAR(?birth) as ?year) (DAY(?birth) as ?day) (MONTH(?birth) as ?month)
+WHERE {
+  ?who foaf:birthday ?birth .
+  ?who foaf:age ?age .
+  ?who foaf:name ?name .
+  FILTER(YEAR(?birth)<1980)
+}

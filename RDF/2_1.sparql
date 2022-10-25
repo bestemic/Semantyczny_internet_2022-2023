@@ -1,0 +1,15 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rel: <http://harrypotter.wiki.com/1.0/relation/>
+ 
+SELECT ?firstName ?lastName ?spellName ?unforgivable
+WHERE {
+  ?person rel:uses ?spell .
+  ?spell rel:isUnforgivable ?unforgivable .
+  ?spell rdfs:label ?spellName .
+  ?person foaf:name ?firstName .
+  ?person foaf:lastName ?lastName .
+  FILTER(!?unforgivable)
+} 
+ORDER BY DESC(?spellName) ?lastName
+LIMIT 10
