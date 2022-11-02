@@ -1,0 +1,10 @@
+BASE         <http://harrypotter.wiki.com/1.0/> 
+PREFIX rel:  <http://harrypotter.wiki.com/1.0/relation/>
+PREFIX type: <http://harrypotter.wiki.com/1.0/type/>
+
+DESCRIBE ?x 
+WHERE { 
+    ?x rel:belongs <Gryffindor> ;
+       a           type:Wizard ;
+       a           type:Muggle .
+}

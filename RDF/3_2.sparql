@@ -1,0 +1,13 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rel:  <http://harrypotter.wiki.com/1.0/relation/>
+
+CONSTRUCT {
+  ?x rel:fullName ?fullName .
+  ?x rel:isAlive ?state .
+}
+WHERE {
+  ?x foaf:name ?name .
+  ?x foaf:lastName ?lastName .
+  BIND(CONCAT(?name, ' ', ?lastName) AS ?fullName) .
+  BIND(IF(EXISTS{?x rel:death ?_b}, "No", "Yes") AS ?state) .
+}

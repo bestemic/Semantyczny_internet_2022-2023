@@ -1,0 +1,9 @@
+PREFIX rel:  <http://harrypotter.wiki.com/1.0/relation/>
+PREFIX fhkb: <http://www.example.com/genealogy.owl#> 
+
+CONSTRUCT {
+  ?x rel:in_relation_with ?y.
+}
+WHERE {
+  ?x fhkb:hasWife | fhkb:hasHusband ?y.
+}
