@@ -1,0 +1,14 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+
+SELECT ?name (COUNT(DISTINCT ?county) AS ?counties)
+WHERE { 
+  ?_a dbo:type dbr:Voivodeships_of_Poland ;
+  				?_b ?county ;
+          		dbp:name ?name .
+  ?county dbp:settlementType dbr:Powiat .
+}
+GROUP BY ?name
+HAVING (COUNT(DISTINCT ?county) >= 20)
+ORDER BY DESC(?counties)
