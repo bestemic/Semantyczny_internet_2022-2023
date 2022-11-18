@@ -94,4 +94,87 @@ Agenci wykonujący podstawowe czynności zamiast użytkownika, jak zamawianie za
 
 ---
 
-cdn.
+### Założenie sieci semantycznej 
+
+Główne założenie to aby maszyny i algorytmy potrafiły korzystać z informacji udstępnianych w internecie. 
+
+> Umożliwenie maszynom zrozumienie zawartości dokumentów (pod względem semantyki czyli związków zachodzących między wyrażeniem języka a przedmiotami do których się odnoszą), a nie mowy i pisma ludzkiego.
+
+Podstawą do posługiwania się dokumentami są **metadane**.
+
+### Zasób
+
+* Zasób 
+
+    Jest to treść i struktura treśni. Z takimi zasobami są związane pewne metody korzystania z nich.
+* Opis zasobu
+
+    Niezależny od treści, wyjaśnia do czego służy treść dokumentu.
+
+* Do opisu zasobów używamy:
+    * RDF jest złożony ze stwierdzeń
+    * XML
+    * Zasób jest identyfikowany przez URI
+
+### Trójki 
+
+Stwierdzenia składają się z trójek:
+* Podmiot - obiekt który opisujemy
+* Orzeczenie - relacja, zależność
+* Dopełnienie - własność obiektu
+
+### Założenia RDF
+
+* Prosty i przejrzysty model danych
+* Interpretacja trójek w sposób formalnych na poziomie znaczenia 
+* Rozszerzanie opisów o słowniki
+* Składnia XML-owa
+* Każdy może formułowac stwierdzenia na temat dowolnych zasobów
+
+### Prosty model danych
+
+Trójki tworzą grafową bazę wiedz poprzez abstrakcyjną składnię. Semantyka jest zdefiniowana w sposób formalny tak że wnioskowanie ma podstawy logiczne.
+
+### Open world assumption
+
+Każdy może tworzyć stwierdzenia o wszystkim, brak kontroli nad tym procederem. Nie możemy założyć że istnieje spójna i zupełna baza wiedzy.
+
+### Struktura RDF
+
+* Grafowy model danych
+
+    Baza wiedzy to kolekcja trójek. Podmiot i orzeczenie to są wązły.
+    * Podmiot - URI, lub blank node
+    * Orzeczenie - URI
+    * Dopełnienie - URI, lub blank node lub literał
+
+* URI i słowniki
+
+    URI identyfikuje zasoby nie tylko te umieszczone w intrnecie. Możemy też przy jego pomocy używac fragmentów zasoby poprzez `#`.
+
+    Słowników używamy do dzielenia się fragmentami opisów. Aby tego dokonać grupuje się pojęcia w przestrzeń nazw.
+    
+* Typy danych i literały
+
+    * Kontenery
+    * Kolekcje
+
+* Serializacja do XML
+
+    Dokument ma korzeń RDF, do bydowania trujek służy `Description` z atrybutem `about` mówiącym jakiego tyczy obiektu. Następnie znajdują się predykaty.
+
+* Blank node
+
+    Umożliwia tworzyć relacje zachodzące między większą liczbą obiektów poprzez łączenie "binarnych" trójek używając pustego pomocniczego węzła.
+
+* Reifikacja
+
+    Opis zasobu który nie odnosi się do innego zasobu a do całej trójki.
+
+* Wnioskowanie
+
+    Z treści jednej trójki jesteśmy w stanie wywnioskować inną trójkę. Mechanizm ten umożliwia tworzene silników wnioskowania w sieci semantycznej i możemy dowieść prawdziwości takiego wniosku.
+
+### RDF Schema
+
+Używamy go do budowy struktur, do opisu własności i cech. Pozwala on na powiązanie pojęć w struktury, najczęściej pozwala na budowanie własnych typów danych a także precyzowanie zakresu pojęć.
