@@ -73,6 +73,7 @@ Agenci wykonujący podstawowe czynności zamiast użytkownika, jak zamawianie za
 
 > Technologie są wdrożone albo dopiero są wdrażane lub odkrywane.
 
+
 ## Wykład nr 2
 
 ---
@@ -89,6 +90,7 @@ Agenci wykonujący podstawowe czynności zamiast użytkownika, jak zamawianie za
     <br>Opisuje informacje o danym węźle (fragment grafu)
 * UPDATE
     <br>Zarządzanie grafem na podstawie zapytań
+
 
 ## Wykład nr 3
 
@@ -178,3 +180,75 @@ Każdy może tworzyć stwierdzenia o wszystkim, brak kontroli nad tym procederem
 ### RDF Schema
 
 Używamy go do budowy struktur, do opisu własności i cech. Pozwala on na powiązanie pojęć w struktury, najczęściej pozwala na budowanie własnych typów danych a także precyzowanie zakresu pojęć.
+
+
+## Wykład nr 4
+
+---
+
+### Problemy z metadanymi 
+
+Metadane nie mówią nam jak zasoby powiązane są z obiektem. Aby pozbyć się tych problemów wprowadzno techniki tematycznej klasyfikacji. 
+
+* Słowniki kontrolowane 
+
+    Lista pojęć używanych do klasyfikajci obiektów z jakiejś dziedziny, w jawny sposób wylicza te pojęcia i można go skojarzyć poprzez słowa kluczowe. 
+
+    Pojedynczy termin może określać wiele pojęć, może mieć wiele nazw i unika dwóznaczności poprzez zakazanie duplikacji.
+
+* Taksonomie 
+
+    Wywodzą się z botanki. Struktura jest hierarchiczna, klasy, obiekty.
+
+* Tezaurusy
+
+    Obiekty są grupowane w hierarchie i stwierdzenia mogą formułować stwierdzenia o innych stwierdzeniach.
+
+* Ontologie
+
+    Jest to model do opisu świata składający się z typów obiektów, własności i relacji zachądzących między nimi. Opierają się na otwartych słownikach i otwiartych zbiorach własności. 
+
+    Jawna specyfikacja pewnej wspólnej konceptualizacji. Nie zakładamy dodatkowej wiedzy poza tej określonej jawnie, wiedza jest określona w sposób sformalizowany. Konceptuazlizacja jest dzielona między pewnymi osobami, dziedzinami.
+
+    Ontologie wykorzysują logikę opisową przez co jest sformalizowanym elementem w logice pierwszego rzędu, a wniosowania będą zdefiniowane na poziomie logicznym. 
+
+* Folksonomie
+
+    Jest to specjalny przypadek ontologii, mówimy że folksonomia to ontlogia stworzona oddolnie przez jakąś społeczność. 
+
+### Elementy ontlogii
+
+* Słownik - definiuje pojęcia i ich znaczenia
+* Klasyfikacja obiektów 
+* Relacje i ich ograniczenia
+
+### Cele ontloigii
+
+Uchwycene wspólnego rozumienia i wykorzystania wiedzy z określonej dziedziny a także udostępnienia sformalizowanej metody operowania wiedzą poprzez maszyny.
+
+### Języki wykorzystywane do budowy ontologii
+
+* RDF Schema
+
+    Prostota ale brak formalnej i logicznej semantyki co utrudniało budowę narzędzi do automatycznego wnioskowania.
+
+* OWL (Web Ontology Language)
+
+    Zdefiniowany na poziomie logicznym
+
+### Wymagania dla języja ontologii
+
+* Rozszerzanie obecnych standardnów
+* Łatwy do zrozumienia i użycia
+* Określony w sposób formalny
+* Mający odpowiednią siłę wyrazu
+* Automatyczne wsparcie dla wnioskowania
+
+### Zastosowanie OWL
+
+* Budowanie ontologii 
+    * Definiowanie klas i dostarczanie informacji o nich 
+    * Defniowanie własności i dostarczanie informacji o nich
+* Definiowanie faktów w dziedzienie 
+    * Tworzenie indywidułów (instancji)
+* Wnioskowanie w sposób automatyczny
