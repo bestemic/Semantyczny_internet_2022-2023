@@ -252,3 +252,63 @@ Uchwycene wspólnego rozumienia i wykorzystania wiedzy z określonej dziedziny a
 * Definiowanie faktów w dziedzienie 
     * Tworzenie indywidułów (instancji)
 * Wnioskowanie w sposób automatyczny
+
+
+## Wykład nr 5
+
+---
+
+
+## Wykład nr 6
+
+---
+
+### Po co opisywć i walidować RDF
+
+* Dla twórców 
+    * Zrozumienie zawartości nad którą pracują
+    * Upewnienie się że produkt ma odpowiednią strukturę
+    * Wygenerowanie interfejsów 
+    * 
+* Dla użytkowników
+    * Pozwala na zrozumienie kontekstu
+    * Weryfikowanie struktury przed procesowaniem jej
+    * Generowanie zapytań i optymalizacje
+
+### Walidacja grafów RDF
+
+* Zalety
+    * Można zapisać w SPARQL wszystko
+    * Wszechobecny
+* Wady
+    * Można zapisać w SPARQL wszystko
+    * Wiele sposobów na zakodowanie ograniczeń
+
+### Wnioskowanie
+
+OWL nakierowany jest na sprawdzanie logiczne. Nie był nastawiony na sprawdzanie poprawności a na to co można jeszcze wywnioskować z naszej ontologii.
+
+Wnioskowanie w OWL jest ograniczone więc trzeba go mieszać z dodatkowymi technologiami.
+
+> Problemem jest wnioskowanie gdy mamy otwarty świat.
+
+### SHACL (Shapes Constraint Language)
+
+Sprawdza czy graf z danymi zgadza się z grafem kształtów mówiącym jak ma wyglądac baza wiedzy.
+
+Wybieramy z nazego grafu grupę którą chcemy walidować i następnie sprawdzamy czy spełna ona reguły określone dla tej grupy. 
+
+Każdy kształt składa się z:
+* Targetów
+    * Wybieramy klasę
+    * Konkretne węzły
+    * Obiekt z określonym property
+    * Podmity z określonym property
+* Ograniczeń
+* Reguł
+
+### SHEX 
+
+* Ma abstrakcyjną składnię, później serializowaną do RDF
+* Nastawienie aby shape wykonywane wielokrotnie
+* Pokazuje które węzły przeszły walidację
