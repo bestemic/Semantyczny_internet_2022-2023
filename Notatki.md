@@ -258,6 +258,76 @@ Uchwycene wspólnego rozumienia i wykorzystania wiedzy z określonej dziedziny a
 
 ---
 
+### Logika opisowa
+
+Są to fundamenty dla ontologii. Skłądają się z wiedzy terminologicznej, taksonomii i złożonych relacji. Potrzebne one są aby przy ich pomocą i przy użyciu ich konceptów modelować formalną semantyką po to aby uzyskać automatyczne wnioskowanie.
+
+### Składnie logik opisowych
+
+* ABox - assertions, są to konkretne obiekty (trójki RDF)
+* TBox - terminology, budowa pojęć, hierarchia i własnoći (definicje pojęć)
+
+Klasy złożone są z predykatów jednoarguemntowych, a relacje złożone z predykatów binarnych.
+
+### Reprezentacja bazy wiedzy
+
+Baza taka składa się z dwóch części. Indywidułów i klas oraz relacji między nimi. (ABox i TBox)
+
+### Logika opisowa ALC
+
+* ABox 
+    * przypisanie indywidułów - Father(john)
+    * przypisanie relacji - hasWife(john, mary)
+* TBox
+    * podklasa - $\sqsubseteq$
+    * koniunkcja - $\sqcap$
+    * równość - $\equiv$
+    * alternatywa - $\sqcup$
+    * negacja - $\neg$
+
+### Unikalne nazwy 
+
+Kiedy dwa indywidua mają różne nazwy są różnymi indywiduałami. OWL nie traktuje tego w ten sposób.
+
+W OWL mogą być dwie instancje o różnych nazwach ale to nie znaczy że to są różne indywiduła. Jeśli chcemy się upwnić że dwa różne obiekty są różne musimy do zdefiniwoać poprzez differentFrom. 
+
+### Założenie otwartości świata
+
+Wnioskując w OWL nie możemy założyć że nasza baza jest kompletna. Nie dedukujemy fałszu tylko z powodu braku prawdy.
+
+### Reguły 
+
+Reguły są natralną formą reprezentacji wiedzy. 
+
+* Poziom składniowy
+
+    Zakodowanie składni reguł i wsparcie aplikacji i elastycznego przetwarzania danych. (RuleML i RIF)
+
+* Poziom semantyki (znaczenie reguł)
+
+    Nawiązują do rozwiązań innych systemów (programowanie w logice), automatyczne wnioskowanie, reguły biznesowe. Składnia dopuszcza różne semantyki więc trzeba to zawiężać. 
+
+    Wynikiem uruchomienia reguły jest wytworzenie nowego faktu nie jest monotoniczne więc jest sprzeczne z ontologią.
+
+* Poziom architektury 
+    * Hybrydowa
+    
+        Semantyczny podział między komponentami a regułami
+
+    * Homogeniczna
+
+### Klauzula Horna
+
+Koniunkcje warunków w części warunkowej i w części decyzyjnej stwierdzenia/hipotezy. Aby reguła została uruchomiona musi być spełniona pełna część warunkowa. Nie używamy tutaj też negacji i innych symboli.
+
+### SWRL
+
+Dołączenie klauzul Horna do języka OWL. Ma on jednak charakter nierozstrzygalny co jest jego problemem.
+
+### Systemy semantycznych wiki
+
+Systemy które pojawiają się jako rozwiniecie klasycznych systemów wiki. Dodanie do takiego systemu mechanizmów semantycznych aby reprezentować wiedzę w sposób semantyczny. Miało to się opierać na dodawaniu adnotacji smantycznych które dla użytkowanka były by widoczne w dalszym stopniu w sposób czytelny i normalny.
+
 
 ## Wykład nr 6
 
