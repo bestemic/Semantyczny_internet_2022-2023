@@ -1,0 +1,1299 @@
+@prefix : <http://www.semanticweb.org/harry-potter#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix harry-potter: <http://www.semanticweb.org/harry-potter#> .
+@base <http://www.semanticweb.org/harry-potter> .
+
+<http://www.semanticweb.org/harry-potter> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/harry-potter#castSpell
+harry-potter:castSpell rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain harry-potter:Wizard ;
+                       rdfs:range harry-potter:Spell ;
+                       rdfs:label "castSpell" .
+
+
+###  http://www.semanticweb.org/harry-potter#castUnforgivableCurse
+harry-potter:castUnforgivableCurse rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                   rdfs:domain harry-potter:DeathEater ;
+                                   rdfs:range harry-potter:UnforgivableCurse ;
+                                   rdfs:label "castUnforgivableCurse" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasBuilding
+harry-potter:hasBuilding rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( harry-potter:Forest
+                                                     harry-potter:Street
+                                                     harry-potter:Town
+                                                   )
+                                     ] ;
+                         rdfs:range harry-potter:Building ;
+                         rdfs:label "hasBuilding" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasBuildingPart
+harry-potter:hasBuildingPart rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdfs:domain harry-potter:Building ;
+                             rdfs:range harry-potter:BuildingPart ;
+                             rdfs:label "hasBuildingPart" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasFurniture
+harry-potter:hasFurniture rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain harry-potter:BuildingPart ;
+                          rdfs:range harry-potter:Furniture ;
+                          rdfs:label "hasFurniture" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasInOffer
+harry-potter:hasInOffer rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:domain harry-potter:Building ;
+                        rdfs:range [ rdf:type owl:Class ;
+                                     owl:unionOf ( harry-potter:Animal
+                                                   harry-potter:Object
+                                                 )
+                                   ] ;
+                        rdfs:label "hasInOffer" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasOwner
+harry-potter:hasOwner rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      owl:inverseOf harry-potter:hasPet ;
+                      rdfs:domain harry-potter:Animal ;
+                      rdfs:range harry-potter:Person ;
+                      rdfs:label "hasOwner" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasPet
+harry-potter:hasPet rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain harry-potter:Person ;
+                    rdfs:range harry-potter:Animal ;
+                    rdfs:label "hasPet" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasSex
+harry-potter:hasSex rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain harry-potter:Creature ;
+                    rdfs:range harry-potter:Sex ;
+                    rdfs:label "hasSex" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasStreet
+harry-potter:hasStreet rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain harry-potter:Town ;
+                       rdfs:range harry-potter:Street ;
+                       rdfs:label "hasStreet" .
+
+
+###  http://www.semanticweb.org/harry-potter#isLocated
+harry-potter:isLocated rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( harry-potter:Object
+                                                   harry-potter:Place
+                                                 )
+                                   ] ;
+                       rdfs:range harry-potter:Place ;
+                       rdfs:label "isLocated" .
+
+
+###  http://www.semanticweb.org/harry-potter#usesWand
+harry-potter:usesWand rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain harry-potter:Wizard ;
+                      rdfs:range harry-potter:Wand ;
+                      rdfs:label "usesWand" .
+
+
+###  http://www.semanticweb.org/harry-potter#workIn
+harry-potter:workIn rdf:type owl:ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( harry-potter:MagicalCreature
+                                                harry-potter:Person
+                                              )
+                                ] ;
+                    rdfs:range harry-potter:Building ;
+                    rdfs:label "workIn" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/harry-potter#canKill
+harry-potter:canKill rdf:type owl:DatatypeProperty ;
+                     rdfs:domain harry-potter:Spell ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "canKill" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasAge
+harry-potter:hasAge rdf:type owl:DatatypeProperty ;
+                    rdfs:domain harry-potter:Person ;
+                    rdfs:range xsd:unsignedInt ;
+                    rdfs:label "hasAge" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasArea
+harry-potter:hasArea rdf:type owl:DatatypeProperty ;
+                     rdfs:domain harry-potter:Place ;
+                     rdfs:range xsd:unsignedLong ;
+                     rdfs:label "hasArea" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasCalories
+harry-potter:hasCalories rdf:type owl:DatatypeProperty ;
+                         rdfs:domain harry-potter:Food ;
+                         rdfs:range xsd:unsignedInt ;
+                         rdfs:label "hasCalories" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasColor
+harry-potter:hasColor rdf:type owl:DatatypeProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( harry-potter:BuildingPart
+                                                  harry-potter:Object
+                                                  harry-potter:Spell
+                                                  [ owl:intersectionOf ( harry-potter:Creature
+                                                                         [ rdf:type owl:Class ;
+                                                                           owl:complementOf harry-potter:Person
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                                                )
+                                  ] ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "hasColor" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasCore
+harry-potter:hasCore rdf:type owl:DatatypeProperty ;
+                     rdfs:domain harry-potter:Wand ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "hasCore" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasHeight
+harry-potter:hasHeight rdf:type owl:DatatypeProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( harry-potter:Building
+                                                   harry-potter:BuildingPart
+                                                   harry-potter:Creature
+                                                   harry-potter:Furniture
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:unsignedInt ;
+                       rdfs:label "hasHeight" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasLegs
+harry-potter:hasLegs rdf:type owl:DatatypeProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( harry-potter:Creature
+                                                 harry-potter:Furniture
+                                               )
+                                 ] ;
+                     rdfs:range xsd:unsignedInt ;
+                     rdfs:label "hasLegs" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasLength
+harry-potter:hasLength rdf:type owl:DatatypeProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( harry-potter:Broom
+                                                   harry-potter:Corridor
+                                                   harry-potter:Street
+                                                   harry-potter:Wand
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:unsignedInt ;
+                       rdfs:label "hasLength" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasName
+harry-potter:hasName rdf:type owl:DatatypeProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( harry-potter:Creature
+                                                 harry-potter:Object
+                                                 harry-potter:Place
+                                                 harry-potter:Spell
+                                               )
+                                 ] ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "hasName" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasPages
+harry-potter:hasPages rdf:type owl:DatatypeProperty ;
+                      rdfs:domain harry-potter:Book ;
+                      rdfs:range xsd:unsignedInt ;
+                      rdfs:label "hasPages" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasPopulation
+harry-potter:hasPopulation rdf:type owl:DatatypeProperty ;
+                           rdfs:domain harry-potter:Town ;
+                           rdfs:range xsd:unsignedInt ;
+                           rdfs:label "hasPopulation" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasSignboard
+harry-potter:hasSignboard rdf:type owl:DatatypeProperty ;
+                          rdfs:domain harry-potter:Building ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "hasSignboard" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasTail
+harry-potter:hasTail rdf:type owl:DatatypeProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( harry-potter:Animal
+                                                 harry-potter:MagicalCreature
+                                               )
+                                 ] ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "hasTail" .
+
+
+###  http://www.semanticweb.org/harry-potter#hasWeight
+harry-potter:hasWeight rdf:type owl:DatatypeProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( harry-potter:Creature
+                                                   harry-potter:Object
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:decimal ;
+                       rdfs:label "hasWeight" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/harry-potter#Animal
+harry-potter:Animal rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( harry-potter:Owl
+                                                                               harry-potter:Unicorn
+                                                                             )
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty harry-potter:hasOwner ;
+                                                                 owl:allValuesFrom harry-potter:Person
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf harry-potter:Creature ;
+                    owl:disjointWith harry-potter:Person ;
+                    rdfs:label "Animal" .
+
+
+###  http://www.semanticweb.org/harry-potter#Bank
+harry-potter:Bank rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Building ;
+                  rdfs:label "Bank" .
+
+
+###  http://www.semanticweb.org/harry-potter#Bathroom
+harry-potter:Bathroom rdf:type owl:Class ;
+                      rdfs:subClassOf harry-potter:BuildingPart ;
+                      rdfs:label "Bathroom" .
+
+
+###  http://www.semanticweb.org/harry-potter#Book
+harry-potter:Book rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Object ;
+                  rdfs:label "Book" .
+
+
+###  http://www.semanticweb.org/harry-potter#Broom
+harry-potter:Broom rdf:type owl:Class ;
+                   rdfs:subClassOf harry-potter:Object ;
+                   rdfs:label "Broom" .
+
+
+###  http://www.semanticweb.org/harry-potter#Building
+harry-potter:Building rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( harry-potter:Place
+                                                                 [ rdf:type owl:Class ;
+                                                                   owl:unionOf ( harry-potter:Bank
+                                                                                 harry-potter:Castle
+                                                                                 harry-potter:Library
+                                                                                 harry-potter:School
+                                                                                 harry-potter:Shop
+                                                                               )
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf harry-potter:Place ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty harry-potter:hasBuildingPart ;
+                                        owl:someValuesFrom harry-potter:BuildingPart
+                                      ] ;
+                      rdfs:label "Building" .
+
+
+###  http://www.semanticweb.org/harry-potter#BuildingPart
+harry-potter:BuildingPart rdf:type owl:Class ;
+                          owl:equivalentClass [ owl:intersectionOf ( harry-potter:Place
+                                                                     [ rdf:type owl:Class ;
+                                                                       owl:unionOf ( harry-potter:Bathroom
+                                                                                     harry-potter:Corridor
+                                                                                     harry-potter:Kitchen
+                                                                                     harry-potter:Library
+                                                                                     harry-potter:Room
+                                                                                   )
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ;
+                          rdfs:subClassOf harry-potter:Place ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty harry-potter:hasFurniture ;
+                                            owl:someValuesFrom harry-potter:Furniture
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty harry-potter:isLocated ;
+                                            owl:someValuesFrom harry-potter:Building
+                                          ] ;
+                          rdfs:label "BuildingPart" .
+
+
+###  http://www.semanticweb.org/harry-potter#Castle
+harry-potter:Castle rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Building ;
+                    rdfs:label "Castle" .
+
+
+###  http://www.semanticweb.org/harry-potter#Chair
+harry-potter:Chair rdf:type owl:Class ;
+                   rdfs:subClassOf harry-potter:Furniture ;
+                   rdfs:label "Chair" .
+
+
+###  http://www.semanticweb.org/harry-potter#Corridor
+harry-potter:Corridor rdf:type owl:Class ;
+                      rdfs:subClassOf harry-potter:BuildingPart ;
+                      rdfs:label "Corridor" .
+
+
+###  http://www.semanticweb.org/harry-potter#Creature
+harry-potter:Creature rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:unionOf ( harry-potter:Animal
+                                                          harry-potter:MagicalCreature
+                                                          harry-potter:Person
+                                                        )
+                                          ] ;
+                      rdfs:label "Creature" .
+
+
+###  http://www.semanticweb.org/harry-potter#DeathEater
+harry-potter:DeathEater rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( harry-potter:Wizard
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty harry-potter:castUnforgivableCurse ;
+                                                                     owl:someValuesFrom harry-potter:UnforgivableCurse
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:label "DeathEater" .
+
+
+###  http://www.semanticweb.org/harry-potter#Desk
+harry-potter:Desk rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Furniture ;
+                  rdfs:label "Desk" .
+
+
+###  http://www.semanticweb.org/harry-potter#Female
+harry-potter:Female rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Sex ;
+                    owl:disjointWith harry-potter:Male ;
+                    rdfs:label "Female" .
+
+
+###  http://www.semanticweb.org/harry-potter#Food
+harry-potter:Food rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Object ;
+                  rdfs:label "Food" .
+
+
+###  http://www.semanticweb.org/harry-potter#Forest
+harry-potter:Forest rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Place ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty harry-potter:hasBuilding ;
+                                      owl:someValuesFrom harry-potter:Building
+                                    ] ;
+                    rdfs:label "Forest" .
+
+
+###  http://www.semanticweb.org/harry-potter#Furniture
+harry-potter:Furniture rdf:type owl:Class ;
+                       rdfs:subClassOf harry-potter:Object ;
+                       rdfs:label "Furniture" .
+
+
+###  http://www.semanticweb.org/harry-potter#Goblin
+harry-potter:Goblin rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:MagicalCreature ;
+                    rdfs:label "Goblin" .
+
+
+###  http://www.semanticweb.org/harry-potter#HalfBlood
+harry-potter:HalfBlood rdf:type owl:Class ;
+                       rdfs:subClassOf harry-potter:Person ;
+                       rdfs:label "HalfBlood" .
+
+
+###  http://www.semanticweb.org/harry-potter#Kitchen
+harry-potter:Kitchen rdf:type owl:Class ;
+                     rdfs:subClassOf harry-potter:BuildingPart ;
+                     rdfs:label "Kitchen" .
+
+
+###  http://www.semanticweb.org/harry-potter#Library
+harry-potter:Library rdf:type owl:Class ;
+                     rdfs:subClassOf harry-potter:Building ,
+                                     harry-potter:BuildingPart ;
+                     rdfs:label "Library" .
+
+
+###  http://www.semanticweb.org/harry-potter#MagicalCreature
+harry-potter:MagicalCreature rdf:type owl:Class ;
+                             rdfs:subClassOf harry-potter:Creature ;
+                             owl:disjointWith harry-potter:Person ;
+                             rdfs:label "MagicalCreature" .
+
+
+###  http://www.semanticweb.org/harry-potter#Male
+harry-potter:Male rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Sex ;
+                  rdfs:label "Male" .
+
+
+###  http://www.semanticweb.org/harry-potter#Man
+harry-potter:Man rdf:type owl:Class ;
+                 rdfs:subClassOf harry-potter:Person ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty harry-potter:hasSex ;
+                                   owl:someValuesFrom harry-potter:Male
+                                 ] ;
+                 owl:disjointWith harry-potter:Woman ;
+                 rdfs:label "Man" .
+
+
+###  http://www.semanticweb.org/harry-potter#Muggle
+harry-potter:Muggle rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Person ;
+                    owl:disjointWith harry-potter:Wizard ;
+                    rdfs:label "Muggle" .
+
+
+###  http://www.semanticweb.org/harry-potter#Object
+harry-potter:Object rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( harry-potter:Book
+                                                        harry-potter:Broom
+                                                        harry-potter:Food
+                                                        harry-potter:Furniture
+                                                        harry-potter:Wand
+                                                      )
+                                        ] ;
+                    rdfs:label "Object" .
+
+
+###  http://www.semanticweb.org/harry-potter#Owl
+harry-potter:Owl rdf:type owl:Class ;
+                 rdfs:subClassOf harry-potter:Animal ;
+                 rdfs:label "Owl" .
+
+
+###  http://www.semanticweb.org/harry-potter#Person
+harry-potter:Person rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( harry-potter:HalfBlood
+                                                        harry-potter:Man
+                                                        harry-potter:Muggle
+                                                        harry-potter:PureBlood
+                                                        harry-potter:Wizard
+                                                        harry-potter:Woman
+                                                      )
+                                        ] ;
+                    rdfs:subClassOf harry-potter:Creature ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty harry-potter:hasPet ;
+                                      owl:someValuesFrom harry-potter:Animal
+                                    ] ;
+                    rdfs:label "Person" .
+
+
+###  http://www.semanticweb.org/harry-potter#Place
+harry-potter:Place rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:unionOf ( harry-potter:Building
+                                                       harry-potter:BuildingPart
+                                                       harry-potter:Forest
+                                                       harry-potter:Street
+                                                       harry-potter:Town
+                                                     )
+                                       ] ;
+                   rdfs:label "Place" .
+
+
+###  http://www.semanticweb.org/harry-potter#PureBlood
+harry-potter:PureBlood rdf:type owl:Class ;
+                       rdfs:subClassOf harry-potter:Person ;
+                       rdfs:label "PureBlood" .
+
+
+###  http://www.semanticweb.org/harry-potter#Room
+harry-potter:Room rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:BuildingPart ;
+                  rdfs:label "Room" .
+
+
+###  http://www.semanticweb.org/harry-potter#School
+harry-potter:School rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Building ;
+                    rdfs:label "School" .
+
+
+###  http://www.semanticweb.org/harry-potter#Sex
+harry-potter:Sex rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Class ;
+                                       owl:unionOf ( harry-potter:Female
+                                                     harry-potter:Male
+                                                   )
+                                     ] ;
+                 rdfs:label "Sex" .
+
+
+###  http://www.semanticweb.org/harry-potter#Shop
+harry-potter:Shop rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Building ;
+                  rdfs:label "Shop" .
+
+
+###  http://www.semanticweb.org/harry-potter#Spell
+harry-potter:Spell rdf:type owl:Class ;
+                   rdfs:label "Spell" .
+
+
+###  http://www.semanticweb.org/harry-potter#Street
+harry-potter:Street rdf:type owl:Class ;
+                    rdfs:subClassOf harry-potter:Place ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty harry-potter:hasBuilding ;
+                                      owl:someValuesFrom harry-potter:Building
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty harry-potter:isLocated ;
+                                      owl:someValuesFrom harry-potter:Place
+                                    ] ;
+                    rdfs:label "Street" .
+
+
+###  http://www.semanticweb.org/harry-potter#Town
+harry-potter:Town rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( harry-potter:Place
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty harry-potter:hasStreet ;
+                                                               owl:someValuesFrom harry-potter:Street
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty harry-potter:hasStreet ;
+                                    owl:someValuesFrom harry-potter:Street
+                                  ] ;
+                  rdfs:label "Town" .
+
+
+###  http://www.semanticweb.org/harry-potter#UnforgivableCurse
+harry-potter:UnforgivableCurse rdf:type owl:Class ;
+                               rdfs:subClassOf harry-potter:Spell ;
+                               rdfs:label "UnforgivableCurse" .
+
+
+###  http://www.semanticweb.org/harry-potter#Unicorn
+harry-potter:Unicorn rdf:type owl:Class ;
+                     rdfs:subClassOf harry-potter:Animal ,
+                                     harry-potter:MagicalCreature ;
+                     rdfs:label "Unicorn" .
+
+
+###  http://www.semanticweb.org/harry-potter#Village
+harry-potter:Village rdf:type owl:Class ;
+                     rdfs:subClassOf harry-potter:Town ;
+                     rdfs:label "Village" .
+
+
+###  http://www.semanticweb.org/harry-potter#Wand
+harry-potter:Wand rdf:type owl:Class ;
+                  rdfs:subClassOf harry-potter:Object ;
+                  rdfs:label "Wand" .
+
+
+###  http://www.semanticweb.org/harry-potter#Wizard
+harry-potter:Wizard rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( harry-potter:Person
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty harry-potter:castSpell ;
+                                                                 owl:someValuesFrom harry-potter:Spell
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty harry-potter:usesWand ;
+                                                                 owl:someValuesFrom harry-potter:Wand
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( harry-potter:HalfBlood
+                                                                               harry-potter:PureBlood
+                                                                             )
+                                                               ]
+                                                               [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( harry-potter:Man
+                                                                               harry-potter:Woman
+                                                                             )
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf harry-potter:Person ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty harry-potter:castSpell ;
+                                      owl:someValuesFrom harry-potter:Spell
+                                    ] ;
+                    rdfs:label "Wizard" .
+
+
+###  http://www.semanticweb.org/harry-potter#Woman
+harry-potter:Woman rdf:type owl:Class ;
+                   rdfs:subClassOf harry-potter:Person ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty harry-potter:hasSex ;
+                                     owl:someValuesFrom harry-potter:Female
+                                   ] ;
+                   rdfs:label "Woman" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/harry-potter#Alohomora
+harry-potter:Alohomora rdf:type owl:NamedIndividual ,
+                                harry-potter:Spell ;
+                       harry-potter:canKill "false"^^xsd:boolean ;
+                       harry-potter:hasColor "red" ;
+                       harry-potter:hasName "Alohomora" .
+
+
+###  http://www.semanticweb.org/harry-potter#AvadaKedavra
+harry-potter:AvadaKedavra rdf:type owl:NamedIndividual ,
+                                   harry-potter:UnforgivableCurse ;
+                          harry-potter:canKill "true"^^xsd:boolean ;
+                          harry-potter:hasColor "black" ;
+                          harry-potter:hasName "Avada kedavra" .
+
+
+###  http://www.semanticweb.org/harry-potter#Bathroom1
+harry-potter:Bathroom1 rdf:type owl:NamedIndividual ,
+                                harry-potter:Bathroom ;
+                       harry-potter:isLocated harry-potter:Hogwart ;
+                       harry-potter:hasName "Marta Bathroom" .
+
+
+###  http://www.semanticweb.org/harry-potter#Bathroom2
+harry-potter:Bathroom2 rdf:type owl:NamedIndividual ,
+                                harry-potter:Bathroom ;
+                       harry-potter:isLocated harry-potter:Hogwart ;
+                       harry-potter:hasColor "blue" ,
+                                             "green" .
+
+
+###  http://www.semanticweb.org/harry-potter#Book1
+harry-potter:Book1 rdf:type owl:NamedIndividual ,
+                            harry-potter:Book ;
+                   harry-potter:isLocated harry-potter:BritishLibrary ;
+                   harry-potter:hasName "Harry Potter and Philosophic Stone" ;
+                   harry-potter:hasPages "354"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Book2
+harry-potter:Book2 rdf:type owl:NamedIndividual ,
+                            harry-potter:Book ;
+                   harry-potter:isLocated harry-potter:HogwartsLibrary ;
+                   harry-potter:hasColor "black" ;
+                   harry-potter:hasPages "1823"^^xsd:unsignedInt ;
+                   harry-potter:hasWeight 1.6 .
+
+
+###  http://www.semanticweb.org/harry-potter#BritishLibrary
+harry-potter:BritishLibrary rdf:type owl:NamedIndividual ,
+                                     harry-potter:Library ;
+                            harry-potter:isLocated harry-potter:London ;
+                            harry-potter:hasName "British Library" ;
+                            harry-potter:hasSignboard "British Library" .
+
+
+###  http://www.semanticweb.org/harry-potter#Chair1
+harry-potter:Chair1 rdf:type owl:NamedIndividual ,
+                             harry-potter:Chair ;
+                    harry-potter:isLocated harry-potter:Class3 .
+
+
+###  http://www.semanticweb.org/harry-potter#Chair2
+harry-potter:Chair2 rdf:type owl:NamedIndividual ,
+                             harry-potter:Chair ;
+                    harry-potter:isLocated harry-potter:Class1 .
+
+
+###  http://www.semanticweb.org/harry-potter#Class1
+harry-potter:Class1 rdf:type owl:NamedIndividual ,
+                             harry-potter:Room ;
+                    harry-potter:isLocated harry-potter:Hogwart ;
+                    harry-potter:hasName "Potioncraft class" .
+
+
+###  http://www.semanticweb.org/harry-potter#Class2
+harry-potter:Class2 rdf:type owl:NamedIndividual ,
+                             harry-potter:Room ;
+                    harry-potter:isLocated harry-potter:Hogwart ;
+                    harry-potter:hasName "Spell class" .
+
+
+###  http://www.semanticweb.org/harry-potter#Class3
+harry-potter:Class3 rdf:type owl:NamedIndividual ,
+                             harry-potter:Room ;
+                    harry-potter:isLocated harry-potter:Hogwart ;
+                    harry-potter:hasName "Defense against black magic" .
+
+
+###  http://www.semanticweb.org/harry-potter#Corridor1
+harry-potter:Corridor1 rdf:type owl:NamedIndividual ,
+                                harry-potter:Corridor ;
+                       harry-potter:isLocated harry-potter:Hogwart ;
+                       harry-potter:hasLength "130"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Corridor2
+harry-potter:Corridor2 rdf:type owl:NamedIndividual ,
+                                harry-potter:Corridor ;
+                       harry-potter:isLocated harry-potter:GringottsBank ;
+                       harry-potter:hasHeight "50"^^xsd:unsignedInt ;
+                       harry-potter:hasLength "1300"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Cruciatus
+harry-potter:Cruciatus rdf:type owl:NamedIndividual ,
+                                harry-potter:UnforgivableCurse ;
+                       harry-potter:canKill "false"^^xsd:boolean ;
+                       harry-potter:hasName "Cruciatus" .
+
+
+###  http://www.semanticweb.org/harry-potter#Desk1
+harry-potter:Desk1 rdf:type owl:NamedIndividual ,
+                            harry-potter:Desk ;
+                   harry-potter:isLocated harry-potter:Class1 .
+
+
+###  http://www.semanticweb.org/harry-potter#Desk2
+harry-potter:Desk2 rdf:type owl:NamedIndividual ,
+                            harry-potter:Desk ;
+                   harry-potter:isLocated harry-potter:Class2 .
+
+
+###  http://www.semanticweb.org/harry-potter#Diagon
+harry-potter:Diagon rdf:type owl:NamedIndividual ,
+                             harry-potter:Street ;
+                    harry-potter:hasBuilding harry-potter:GringottsBank ,
+                                             harry-potter:ShopFood ,
+                                             harry-potter:ShopQuidditch ,
+                                             harry-potter:ShopWands ;
+                    harry-potter:isLocated harry-potter:London ;
+                    harry-potter:hasLength "981"^^xsd:unsignedInt ;
+                    harry-potter:hasName "Diagon Alley" .
+
+
+###  http://www.semanticweb.org/harry-potter#Expelliarmus
+harry-potter:Expelliarmus rdf:type owl:NamedIndividual ,
+                                   harry-potter:Spell ;
+                          harry-potter:canKill "false"^^xsd:boolean ;
+                          harry-potter:hasColor "purple" ;
+                          harry-potter:hasName "Expelliarmus" .
+
+
+###  http://www.semanticweb.org/harry-potter#Food1
+harry-potter:Food1 rdf:type owl:NamedIndividual ,
+                            harry-potter:Food ;
+                   harry-potter:hasCalories "345"^^xsd:unsignedInt ;
+                   harry-potter:hasName "Chocolate Frog" .
+
+
+###  http://www.semanticweb.org/harry-potter#Food2
+harry-potter:Food2 rdf:type owl:NamedIndividual ,
+                            harry-potter:Food ;
+                   harry-potter:hasCalories "643"^^xsd:unsignedInt ;
+                   harry-potter:hasName "Honey Beer" .
+
+
+###  http://www.semanticweb.org/harry-potter#ForbiddenForest
+harry-potter:ForbiddenForest rdf:type owl:NamedIndividual ,
+                                      harry-potter:Forest ;
+                             harry-potter:hasBuilding harry-potter:Hogwart ;
+                             harry-potter:hasArea "5630000000000"^^xsd:unsignedLong ;
+                             harry-potter:hasName "Forbidden Forest" .
+
+
+###  http://www.semanticweb.org/harry-potter#Goblin1
+harry-potter:Goblin1 rdf:type owl:NamedIndividual ,
+                              harry-potter:Goblin ;
+                     harry-potter:workIn harry-potter:GringottsBank ;
+                     harry-potter:hasHeight "98"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Goblin2
+harry-potter:Goblin2 rdf:type owl:NamedIndividual ,
+                              harry-potter:Goblin ;
+                     harry-potter:workIn harry-potter:GringottsBank ;
+                     harry-potter:hasHeight "106"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#GringottsBank
+harry-potter:GringottsBank rdf:type owl:NamedIndividual ,
+                                    harry-potter:Bank ;
+                           harry-potter:isLocated harry-potter:Diagon ;
+                           harry-potter:hasName "Gringotts Wizarding Bank" ;
+                           harry-potter:hasSignboard "Gringotts Wizarding Bank" .
+
+
+###  http://www.semanticweb.org/harry-potter#HarryPotter
+harry-potter:HarryPotter rdf:type owl:NamedIndividual ,
+                                  harry-potter:Man ,
+                                  harry-potter:PureBlood ;
+                         harry-potter:castSpell harry-potter:Alohomora ,
+                                                harry-potter:Expelliarmus ;
+                         harry-potter:hasPet harry-potter:Hedwiga ;
+                         harry-potter:usesWand harry-potter:Wand2 ;
+                         harry-potter:hasHeight "176"^^xsd:unsignedInt ;
+                         harry-potter:hasLegs "2"^^xsd:unsignedInt ;
+                         harry-potter:hasName "Harry" ;
+                         harry-potter:hasWeight 73.5 .
+
+
+###  http://www.semanticweb.org/harry-potter#Hedwiga
+harry-potter:Hedwiga rdf:type owl:NamedIndividual ,
+                              harry-potter:Owl ;
+                     harry-potter:hasColor "white" ;
+                     harry-potter:hasLegs "2"^^xsd:unsignedInt ;
+                     harry-potter:hasName "Hedwiga" ;
+                     harry-potter:hasTail "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/harry-potter#Hogsmeade
+harry-potter:Hogsmeade rdf:type owl:NamedIndividual ,
+                                harry-potter:Village ;
+                       harry-potter:hasBuilding harry-potter:ShopHogsmeade ;
+                       harry-potter:hasArea "13500000"^^xsd:unsignedLong ;
+                       harry-potter:hasPopulation "57"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Hogwart
+harry-potter:Hogwart rdf:type owl:NamedIndividual ,
+                              harry-potter:Castle ,
+                              harry-potter:School ;
+                     harry-potter:hasBuildingPart harry-potter:HogwartsLibrary ;
+                     harry-potter:isLocated harry-potter:ForbiddenForest ;
+                     harry-potter:hasName "Hogwart" .
+
+
+###  http://www.semanticweb.org/harry-potter#HogwartsLibrary
+harry-potter:HogwartsLibrary rdf:type owl:NamedIndividual ,
+                                      harry-potter:Library ;
+                             harry-potter:isLocated harry-potter:Hogwart ;
+                             harry-potter:hasName "Hogwarts Library" .
+
+
+###  http://www.semanticweb.org/harry-potter#Kitchen1
+harry-potter:Kitchen1 rdf:type owl:NamedIndividual ,
+                               harry-potter:Kitchen ;
+                      harry-potter:isLocated harry-potter:Hogwart ;
+                      harry-potter:hasArea "50"^^xsd:unsignedLong ;
+                      harry-potter:hasName "Hogwart Big Kitchen" .
+
+
+###  http://www.semanticweb.org/harry-potter#Kitchen2
+harry-potter:Kitchen2 rdf:type owl:NamedIndividual ,
+                               harry-potter:Kitchen ;
+                      harry-potter:isLocated harry-potter:ShopHogsmeade ;
+                      harry-potter:hasArea "16"^^xsd:unsignedLong .
+
+
+###  http://www.semanticweb.org/harry-potter#London
+harry-potter:London rdf:type owl:NamedIndividual ,
+                             harry-potter:Town ;
+                    harry-potter:hasStreet harry-potter:Diagon ;
+                    harry-potter:hasArea "1572000000"^^xsd:unsignedLong ;
+                    harry-potter:hasPopulation "8982000"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Nimbus1
+harry-potter:Nimbus1 rdf:type owl:NamedIndividual ,
+                              harry-potter:Broom ;
+                     harry-potter:hasColor "brown" ;
+                     harry-potter:hasLength "3"^^xsd:unsignedInt ;
+                     harry-potter:hasName "Nimbus2000" .
+
+
+###  http://www.semanticweb.org/harry-potter#Paris
+harry-potter:Paris rdf:type owl:NamedIndividual ,
+                            harry-potter:Town ;
+                   harry-potter:hasArea 105000000 ;
+                   harry-potter:hasPopulation 2161000 .
+
+
+###  http://www.semanticweb.org/harry-potter#Reparo
+harry-potter:Reparo rdf:type owl:NamedIndividual ,
+                             harry-potter:Spell ;
+                    harry-potter:canKill "false"^^xsd:boolean ;
+                    harry-potter:hasColor "green" ;
+                    harry-potter:hasName "Reparo" .
+
+
+###  http://www.semanticweb.org/harry-potter#ShopFood
+harry-potter:ShopFood rdf:type owl:NamedIndividual ,
+                               harry-potter:Shop ;
+                      harry-potter:hasInOffer harry-potter:Food1 ;
+                      harry-potter:isLocated harry-potter:Diagon ;
+                      harry-potter:hasSignboard "Sugarplum's Sweets Shop" .
+
+
+###  http://www.semanticweb.org/harry-potter#ShopHogsmeade
+harry-potter:ShopHogsmeade rdf:type owl:NamedIndividual ,
+                                    harry-potter:Shop ;
+                           harry-potter:hasInOffer harry-potter:Food2 ;
+                           harry-potter:isLocated harry-potter:Hogsmeade ;
+                           harry-potter:hasSignboard "Honey Kingdom" .
+
+
+###  http://www.semanticweb.org/harry-potter#ShopQuidditch
+harry-potter:ShopQuidditch rdf:type owl:NamedIndividual ,
+                                    harry-potter:Shop ;
+                           harry-potter:hasInOffer harry-potter:Nimbus1 ;
+                           harry-potter:isLocated harry-potter:Diagon ;
+                           harry-potter:hasSignboard "Quality Quidditch Supplies" .
+
+
+###  http://www.semanticweb.org/harry-potter#ShopWands
+harry-potter:ShopWands rdf:type owl:NamedIndividual ,
+                                harry-potter:Shop ;
+                       harry-potter:hasInOffer harry-potter:Wand2 ;
+                       harry-potter:isLocated harry-potter:Diagon ;
+                       harry-potter:hasSignboard "Ollivanders Wand" .
+
+
+###  http://www.semanticweb.org/harry-potter#Unicorn1
+harry-potter:Unicorn1 rdf:type owl:NamedIndividual ,
+                               harry-potter:Unicorn ;
+                      harry-potter:hasColor "white" ;
+                      harry-potter:hasLegs "4"^^xsd:unsignedInt ;
+                      harry-potter:hasTail "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/harry-potter#Unicorn2
+harry-potter:Unicorn2 rdf:type owl:NamedIndividual ,
+                               harry-potter:Unicorn ;
+                      harry-potter:hasColor "grey" ;
+                      harry-potter:hasLegs "4"^^xsd:unsignedInt ;
+                      harry-potter:hasTail "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/harry-potter#Voldemord
+harry-potter:Voldemord rdf:type owl:NamedIndividual ,
+                                harry-potter:Wizard ;
+                       harry-potter:castSpell harry-potter:Alohomora ;
+                       harry-potter:castUnforgivableCurse harry-potter:AvadaKedavra ,
+                                                          harry-potter:Cruciatus ;
+                       harry-potter:hasHeight "191"^^xsd:unsignedInt ;
+                       harry-potter:hasName "Tom" .
+
+
+###  http://www.semanticweb.org/harry-potter#Wand1
+harry-potter:Wand1 rdf:type owl:NamedIndividual ,
+                            harry-potter:Wand ;
+                   harry-potter:hasCore "Frog Leg" ;
+                   harry-potter:hasLength "31"^^xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/harry-potter#Wand2
+harry-potter:Wand2 rdf:type owl:NamedIndividual ,
+                            harry-potter:Wand ;
+                   harry-potter:hasCore "Unicorn hair" ;
+                   harry-potter:hasLength "23"^^xsd:unsignedInt .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Bank
+                harry-potter:Castle
+                harry-potter:Library
+                harry-potter:Shop
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Bank
+                harry-potter:Library
+                harry-potter:School
+                harry-potter:Shop
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Bathroom
+                harry-potter:Corridor
+                harry-potter:Kitchen
+                harry-potter:Library
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Book
+                harry-potter:Broom
+                harry-potter:Food
+                harry-potter:Furniture
+                harry-potter:Wand
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Building
+                harry-potter:Forest
+                harry-potter:Street
+                harry-potter:Town
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:BuildingPart
+                harry-potter:Forest
+                harry-potter:Street
+                harry-potter:Town
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:Creature
+                harry-potter:Object
+                harry-potter:Place
+                harry-potter:Sex
+                harry-potter:Spell
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( harry-potter:HalfBlood
+                harry-potter:Muggle
+                harry-potter:PureBlood
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers rdf:nil
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+harry-potter:x rdf:type swrl:Variable .
+
+harry-potter:y rdf:type swrl:Variable .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S4"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate harry-potter:BuildingPart ;
+                           swrl:argument1 harry-potter:x
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate harry-potter:isLocated ;
+                                      swrl:argument1 harry-potter:x ;
+                                      swrl:argument2 harry-potter:y
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate harry-potter:Building ;
+                                                 swrl:argument1 harry-potter:y
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate harry-potter:hasBuildingPart ;
+                           swrl:argument1 harry-potter:y ;
+                           swrl:argument2 harry-potter:x
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S1"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate harry-potter:Person ;
+                           swrl:argument1 harry-potter:x
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate harry-potter:castSpell ;
+                                      swrl:argument1 harry-potter:x ;
+                                      swrl:argument2 harry-potter:y
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate harry-potter:Spell ;
+                                                 swrl:argument1 harry-potter:y
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate harry-potter:Wizard ;
+                           swrl:argument1 harry-potter:x
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S2"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate harry-potter:Person ;
+                           swrl:argument1 harry-potter:x
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate harry-potter:castSpell ;
+                                      swrl:argument1 harry-potter:x ;
+                                      swrl:argument2 harry-potter:y
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate harry-potter:UnforgivableCurse ;
+                                                 swrl:argument1 harry-potter:y
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate harry-potter:castUnforgivableCurse ;
+                           swrl:argument1 harry-potter:x ;
+                           swrl:argument2 harry-potter:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S3"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate harry-potter:Person ;
+                           swrl:argument1 harry-potter:x
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate harry-potter:castUnforgivableCurse ;
+                                      swrl:argument1 harry-potter:x ;
+                                      swrl:argument2 harry-potter:y
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate harry-potter:UnforgivableCurse ;
+                                                 swrl:argument1 harry-potter:y
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate harry-potter:castSpell ;
+                           swrl:argument1 harry-potter:x ;
+                           swrl:argument2 harry-potter:y
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

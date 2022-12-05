@@ -1,0 +1,65 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:    <http://www.example.org/#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix :   <http://www.semanticweb.org/harry-potter#> .
+
+:GoblinShape
+    a sh:NodeShape ;
+    sh:targetClass :Goblin ;
+    sh:property [
+        sh:path :hasHeight ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:datatype xsd:unsignedInt ;
+        sh:maxExclusive 110 ;
+    ];
+    .
+
+:HarryPotterShape
+    a sh:NodeShape ;
+    sh:targetNode :HarryPotter ;
+    sh:property [
+        sh:path :hasHeight ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:datatype xsd:unsignedInt ;
+    ] ;
+    sh:property [
+        sh:path :hasWeight ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:maxExclusive 110 ;
+        sh:minExclusive 5 ;
+    ] ;
+    sh:property [
+        sh:path :castUnforgivableCurses ;
+        sh:maxCount 0 ;
+    ] ;
+    .
+
+:Village
+    a sh:NodeShape ;
+    sh:targetClass :Village ;
+    sh:property [
+        sh:path :hasPopulation ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:datatype xsd:unsignedInt ;
+        sh:maxExclusive 100 ;
+    ] ;
+    sh:property [
+        sh:path :hasArea ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:datatype xsd:unsignedLong ;
+        sh:minExclusive 10000000 ;
+    ] ;
+    sh:property [
+        sh:path :hasStreet ;
+        sh:minCount 0 ;
+    ] ;
+    .
