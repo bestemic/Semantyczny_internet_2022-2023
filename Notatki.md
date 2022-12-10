@@ -382,3 +382,65 @@ Każdy kształt składa się z:
 * Ma abstrakcyjną składnię, później serializowaną do RDF
 * Nastawienie aby shape wykonywane wielokrotnie
 * Pokazuje które węzły przeszły walidację
+
+
+## Wykład nr 7
+
+---
+
+### Inżyniernia wiedzy
+
+Dyscyplina w której wprowadzmy wiedzę do jakiegoś systemu komputerowego po to aby rozwiązać problemy wymagające dużej ilości ludzkiej ekspertyzy.
+
+### Grupowa inżynieria wiedzy
+
+Proces inżynierji w której wprowadzana jest wiedza do systemów aby rozwiązywać problemy, wykonywany przez grupę ludzi.
+
+### Sposoby tworzenia wiedzy
+
+- Kooperacja
+
+    Dzielenie wiedzy na fragmenty i osoby które robią danyc fragment niezależnie bez przeszkadzania innym.
+
+- Kolaboracja
+
+    Współpraca wielu ludzi chcących osiągnąć wspólny cel ale mając inną motywację.
+
+- Kolektywana
+
+    Jednorodna grupa ludzi którzy mają podobny cel i podobne interesy. Jest to podgrupa kolaboracji.
+
+### Semantyczne wiki
+
+Problem ze zwykłmy wiki jest taki że nie pozwalają one nam w prosty sposób wyciągać z nich informacji lub podają nam sprzeczne i niespójne między sobą informacje.
+
+Informacje na wiki możemy łączyć z tagami przez co będzie to tworzyło proste trójki a użytkownik będzie to widział w sposób naturalny. W ten sposób powstają semantyczne wiki.
+
+### Połącznie między OWL
+
+- każda strona to instancja
+- kategorie to klasy
+- własności to własności OWL
+- wartości własności to literały lub instancje
+
+### Typy ontologii
+
+1. Ontologia Fundamentalna - jest to generalna ontologia, używana między różnymi domenami, reprezentuje generalna koncepty niezalażne od problemu
+2. Ontologia dziedzinowa - fundamenty wewnątrz jakiejś dziedziny 
+3. Ontologia aplikacyjna - zajmuje się wyspecjalizowanymi zadaniami i dziedzinami 
+4. Ontolgia zadań - fundamentalne koncepty głównych aktywności
+
+### Rodzaje wiki semantycznych 
+
+- Proste semantyczne wiki
+
+    Jest to rozszerzenie markupa o trójki. Jedna strona to jeden temat.
+
+- Wiki danych 
+
+    Wykorzystują dedykowane edytory do przechowywania semantycznych danych zamiast czystego tekstu. Brak powielania danych ale struktura jest ograniczona.
+
+- Semantyczne wiki wiedzy
+
+    Poza trójkami znajdują się inne metody reprezentacji i weryfikacji wiedzy.
+
