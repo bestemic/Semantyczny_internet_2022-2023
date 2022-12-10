@@ -444,3 +444,36 @@ Informacje na wiki możemy łączyć z tagami przez co będzie to tworzyło pros
 
     Poza trójkami znajdują się inne metody reprezentacji i weryfikacji wiedzy.
 
+
+## Wykład nr 8
+
+---
+
+### Wielkość danych 
+
+Procesowanie plików tekstowych nie jest skalowalne. A ręczne zbieranie danych z różnych źródeł jest ciężki i czasochłonne.
+
+### Wymagania aplikacji oparte o grafy wiedzy
+
+- Integracja danych 
+
+    Pobiera dane bezpśrednio z grafów lub wczytywać dane i w momencie wczytywania przetwarzać je na dane semantyczne.
+
+- Przechowywanie RDF
+
+    Istnieją specjalne silniki bazodanowe zoptymalizowane pod zapisywanie i odpytywanie trójek.
+
+    Podstawowymi struktorami danych są trójki i grafy. 
+
+- Logika i UI
+- Publikowanie danych
+
+    Czasem chcemy aby nasza aplikacja mogła publikowac gdzieś dane. Opcją jest wrzucenie plików RDF gdzieś do internetu i odczytywanie ich albo umieszczenie danych w treści stron HTML. Innym rozwiązaniem są endpointy SPARQL.
+
+### Frameworki
+
+- wspierają RDF, RDFS, OWL
+- wnioskowanie dla RDFS i OWL
+- posiadają wspacie dla enspointów SPARQL
+- obsługa i przechowywanie danych 
+- często używane zadania zaimplementowane jako moduły
