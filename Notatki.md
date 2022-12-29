@@ -477,3 +477,22 @@ Procesowanie plików tekstowych nie jest skalowalne. A ręczne zbieranie danych 
 - posiadają wspacie dla enspointów SPARQL
 - obsługa i przechowywanie danych 
 - często używane zadania zaimplementowane jako moduły
+
+
+## Wykład nr 9
+
+---
+
+### Zasady Linked Open Data
+
+1. Istnieje wiele zbiorów danych bazowanych na RDF
+2. Zbiory są ze sobą połączone za pomocą URI
+3. Łatwe do przetwarzania maszynowego, istnieją narządzia i bliblioteki to umożliwiające
+
+### Mashups
+
+Powyższe zasady pozwalają nam na łączenie danych i wyświetlanie ich w wybrany i ciekawy sposób. 
+
+Jest to dynamiczna struktura w takim sensie że podczas ładowania danych mogą się doczytać nowe elementy lub zaktualizować jakieś fragmenty. 
+
+Mashupy łączą istniejące zbiory danych ale też pozwalają na udstępnianie wyniku takiego złączenia jako nowy serwis z którego będą korzystać inni. 
