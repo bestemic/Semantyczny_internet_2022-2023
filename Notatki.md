@@ -496,3 +496,43 @@ Powyższe zasady pozwalają nam na łączenie danych i wyświetlanie ich w wybra
 Jest to dynamiczna struktura w takim sensie że podczas ładowania danych mogą się doczytać nowe elementy lub zaktualizować jakieś fragmenty. 
 
 Mashupy łączą istniejące zbiory danych ale też pozwalają na udstępnianie wyniku takiego złączenia jako nowy serwis z którego będą korzystać inni. 
+
+
+## Wykład nr 10
+
+---
+
+### Graf wiedzy
+
+- Graf składajacy się z konceptów, relacji, właśniwości, klas i opisu konkretnych jednostek
+- Bazuje na formalnym języku opisu
+- Może być otwarty, prywatny lub zamknięty
+- Dane mogą być oryginalne, przetworzone lub zagregowane
+- Graf składa się z instancji (ABox), schmatu (TBox) i metadanych
+- Taksonomie (hierarchie) są używane do kategoryzowania danych
+
+### Porównywanie grafów wiedzy
+
+Porównywać możemy obserwując proste statystyki, wielskośc, pokrycie tematu, kompletność, szczegółowość detali. Możemy też użyć metod analityki sieciowej do znajdywania najważniejszych węzłów w grafie (**centralność**). 
+
+### Mierzenie centralności 
+
+Możemy sprawdzać ile node ma krawędzi wejściowych, wyjściowych, przechodzących. Używamy też ważenie ścieżek albo liczenia średnicy czyli najdłuższej z najkrótszych ścieżek. 
+
+### Semantyczne podobieństwo
+
+Podobne węzły moga być identyfikowane na podstawie dzielonego środkiwska (kontekstu). Problemem tutaj może być znalezienie podobieństwa w przypadku wielu węzłów gdzie sprawdzamy każdego z każdym. Rozwiązaniem grafu może być przeniesienie węzłów do przestrzeni wektorowej. 
+
+### Embedingi słów
+
+Mapują słowa na reprezentację wektorową. Podstawowym założeniem jest że podobne słowa będą wystąpować w podobnych kontekstach. 
+
+### Translation Distance Model
+
+- TransT
+
+    Węzły są punktami w przestrzen wymiarowej a relacje przesunięciami w tej przestrzeni. Problem z funkcjami symetrycznymi i relacjami innymi niż 1 do 1.
+
+- TransH
+
+    Relacja jest hiperpłaszczyzną. Węzły są na nią rzutowane i relacja to jest przesunięcie na tej płaszczyźnie. 
